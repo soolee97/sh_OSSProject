@@ -14,8 +14,8 @@ int creatData (Data *d) {
     scanf("%d", &d->deposit) ;
     printf("How much did you spend today? ") ;
     scanf("%d", &d->withdraw) ;
-    d->balance = d->balance + d->deposit - d->withdraw ;
-
+    
+    d->balance = d->deposit - d->withdraw ; 
     return 1 ; 
 } 
 
@@ -31,8 +31,9 @@ int listData(Data *d, int count) {
 }
 
 int readData(Data d) {
+
     printf("date : %d %d %d. ", d.year, d.month, d.date) ;
-    printf("money left : %d", d.balance) ; 
+    printf("money left : %d \n", d.balance) ; 
 }
 
 int updateData(Data *d) {
@@ -47,7 +48,7 @@ int updateData(Data *d) {
     scanf("%d", d->deposit) ;
     printf("How much did you spend today? ") ;
     scanf("%d", d->withdraw) ;
-    d->balance = d->balance + d->deposit - d->withdraw ;
+    d->balance = d->deposit - d->withdraw ;
     return 1 ; 
 }
 
