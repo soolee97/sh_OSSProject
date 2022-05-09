@@ -2,6 +2,10 @@
 #include <stdlib.h> 
 #include "finance.h"
 
+void buffer(void){
+        while(getchar()!='\n') ;
+}
+
 int creatData (Data *d) {
     printf("\n**Set data**\n") ;
     printf("Year : ") ;
@@ -11,11 +15,11 @@ int creatData (Data *d) {
     printf("date : ") ;
     scanf("%d", &d->date) ;
     printf("how much money do you have (won) ? ") ;
-    scanf("%d", &d->deposit) ;
+    scanf("%d", &d->deposit) ; 
     printf("How much did you spend today? ") ;
     scanf("%d", &d->withdraw) ;
-    
-    d->balance = d->deposit - d->withdraw ; 
+    d->balance = d->deposit - d->withdraw ;
+
     return 1 ; 
 } 
 
@@ -31,23 +35,22 @@ int listData(Data *d, int count) {
 }
 
 int readData(Data d) {
-
     printf("date : %d %d %d. ", d.year, d.month, d.date) ;
-    printf("money left : %d \n", d.balance) ; 
+    printf("money left : %d", d.balance) ; 
 }
 
 int updateData(Data *d) {
     printf("Update NewData\n") ;
     printf("Year : ") ;
-    scanf("%d", d->year) ;
+    scanf("%d", &d->year) ;
     printf("month : ") ;
-    scanf("%d", d->month) ;
+    scanf("%d", &d->month) ;
     printf("date : ") ;
-    scanf("%d", d->date) ;
+    scanf("%d", &d->date) ;
     printf("how much money do you have (won) ? ") ;
-    scanf("%d", d->deposit) ;
+    scanf("%d", &d->deposit) ;
     printf("How much did you spend today? ") ;
-    scanf("%d", d->withdraw) ;
+    scanf("%d", &d->withdraw) ;
     d->balance = d->deposit - d->withdraw ;
     return 1 ; 
 }
