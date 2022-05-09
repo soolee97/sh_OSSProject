@@ -12,6 +12,7 @@ typedef struct {
         int withdraw ; //내가 지출한 돈 
 }Data ;
 
+void buffer(void) ;
 int listData(Data *d, int count) ;
 int creatData (Data *d) ; 
 int readData(Data d) ; 
