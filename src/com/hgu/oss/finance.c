@@ -11,9 +11,9 @@ int creatData (Data *d) {
     printf("date : ") ;
     scanf("%d", &d->date) ;
     printf("how much money do you have (won) ? ") ;
-    scanf("%d", d->deposit) ;
+    scanf("%d", &d->deposit) ;
     printf("How much did you spend today? ") ;
-    scanf("%d", d->withdraw) ;
+    scanf("%d", &d->withdraw) ;
     d->balance = d->balance + d->deposit - d->withdraw ;
 
     return 1 ; 
