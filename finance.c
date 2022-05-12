@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h> 
+#include <string.h>
 #include "finance.h"
 
 void buffer(void){
@@ -92,6 +93,7 @@ int showMenu() {
     printf("2. 기록 쓰기\n") ; //updateData
     printf("3. 기록 수정\n") ; //updateData
     printf("4. 기록 삭제\n") ; //deleteData 
+    printf("5. 로그아웃\n") ; //deleteData 
     printf("0. 종료 \n") ;
     printf("=>   ") ;
     scanf("%d", &menu) ;
@@ -101,10 +103,76 @@ int showMenu() {
 void compareData(Data *d, int count){
     int withdraw;
     if(count>1){
-        withdraw = (d[count-2].withdraw + d[count-2].withdraw) - (d[count-1].withdraw + d[count-1].deposit);
+        withdraw = (d[count-2].withdraw + d[count-2].deposit) - (d[count-1].withdraw + d[count-1].deposit);
     if(withdraw < 0)
         printf("전보다 %d원 더 쓰셨습니다.\n", -1*withdraw);
     else
         printf("전보다 %d원 덜 쓰셨습니다.\n", withdraw);
     }
+}
+
+int login(){
+    char id[20];
+    char pw[20];
+    char read_id[20];
+    char read_pw[20];
+    FILE* fp = fopen("account.txt", "r");
+    printf("ID: ");
+    scanf("%s", id);
+    printf("PW: ");
+    scanf("%s", pw);
+    while(!feof(fp)){
+        fgets(read_id, 20, fp);
+        read_id[strlen(read_id)-1] = '\0';
+        fgets(read_pw, 20, fp);
+        read_pw[strlen(read_pw)-1] = '\0';
+        if((!strcmp(id,read_id)) && (!strcmp(pw,read_pw))){
+            printf("-----------------------로그인 성공-----------------------\n");
+            return 1;
+        }
+    }
+    fclose(fp);
+    return 0;
+}
+
+int makeAccount(){
+    char id[20];
+    char pw[20];
+    FILE* fp = fopen("account.txt", "a");
+    printf("ID: ");
+    scanf("%s", id);
+    printf("PW: ");
+    scanf("%s", pw);
+
+    fprintf(fp, "%s\n%s\n", id, pw);
+    fclose(fp);
+    return 1;
+}
+
+int showLoginOpt(){
+    int choice;
+    printf("0. 종료\n");
+    printf("1. 로그인\n");
+    printf("2. 회원가입\n");
+    printf("=> ");
+    scanf("%d", &choice);
+    
+    return choice;
+}
+int checkFirstBalance(){
+    int flag;
+    FILE *fp = fopen("checkFirstBalance.txt", "r");
+    fscanf(fp, "%d", &flag);
+    if(flag==1){
+        fclose(fp);    
+        return 1;
+    }
+    else 
+        fclose(fp);    
+    return 0;
+}
+void writeBalance(){
+    FILE *fp = fopen("checkFirstBalance.txt", "a");
+    fprintf(fp, "%d", 1);
+    fclose(fp);
 }

@@ -13,6 +13,12 @@ typedef struct {
         int withdraw ; //내가 지출한 돈 
 }Data ;
 
+/*
+typedef struct{
+        char id[20];
+        char pw[20];
+}User;
+*/
 void buffer(void) ;
 int listData(Data *d, int count) ;
 int createData (Data *d, int money) ; 
@@ -21,5 +27,10 @@ int updateData(Data *d, int count) ;
 int deleteData(Data *d, int count) ; 
 void compareData(Data *d, int count);
 int showMenu() ; 
-
-
+int login();
+int makeAccount();
+int login();
+int makeAccount();
+int showLoginOpt();
+int checkFirstBalance();
+void writeBalance();
