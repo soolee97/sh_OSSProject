@@ -16,7 +16,7 @@ int main() {
     int check;
     
     fp = fopen("account.txt", "a");
-    fp2 = fopen("checkFirstBalance.txt", "a");
+    //fp2 = fopen("checkFirstBalance.txt", "a");
     while(1){
         opt = showLoginOpt();
         if(opt == 0){
@@ -41,12 +41,12 @@ int main() {
         }
         // 처음에만 현재 잔고 입력 
         while(1){
-            if(checkFirstBalance())
-                break;
+            //if(checkFirstBalance())
+            //    break;
             printf("현재 잔고 입력: ");
             scanf("%d", &balance);
             if(balance>=0){
-                writeBalance();
+                //writeBalance();
                 break;
             }
             else{
@@ -67,6 +67,7 @@ int main() {
             else if (selectMenu == 2) { //2. add data
                 balance = createData(&d[index++] , balance) ; 
                 compareData(d, index);
+                printPhrase();
                 count++;
             }
             else if (selectMenu == 3) { //3. update data

@@ -2,6 +2,7 @@
 #include <stdlib.h> 
 #include <string.h>
 #include "finance.h"
+#include <time.h>
 
 void buffer(void){
         while(getchar()!='\n') ;
@@ -146,6 +147,8 @@ int makeAccount(){
 
     fprintf(fp, "%s\n%s\n", id, pw);
     fclose(fp);
+    fp = fopen("checkFirstBalance.txt", "w");
+
     return 1;
 }
 
@@ -159,6 +162,20 @@ int showLoginOpt(){
     
     return choice;
 }
+
+void printPhrase(){
+    char phrase[5][100] = {
+        "오늘 하루도 수고 많았어요.\n",
+        "내일은 더 행복한 하루가 될 거에요.\n",
+        "티끌 모아 태산!\n",
+        "오늘 하루 돈을 가치있게 쓰셨나요?.\n",
+        "내일 또 기록해봐요!\n"
+    };
+
+    srand(time(NULL));
+    printf("%s" , phrase[rand()%5]);
+}
+/*
 int checkFirstBalance(){
     int flag;
     FILE *fp = fopen("checkFirstBalance.txt", "r");
@@ -176,3 +193,4 @@ void writeBalance(){
     fprintf(fp, "%d", 1);
     fclose(fp);
 }
+*/

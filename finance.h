@@ -32,5 +32,6 @@ int makeAccount();
 int login();
 int makeAccount();
 int showLoginOpt();
-int checkFirstBalance();
-void writeBalance();
+void printPhrase();
+/*int checkFirstBalance();
+void writeBalance();*/
